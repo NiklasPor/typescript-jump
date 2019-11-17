@@ -1,0 +1,147 @@
+{
+  "name": "typescript-jump",
+  "displayName": "TypeScript Jump",
+  "description": "Helps navigating inside Typescript, Angular and NgRx projects.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "repository": {
+    "url": "https://github.com/NiklasPor/typescript-jump",
+    "type": "git"
+  },
+  "publisher": "niklaspor",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.jump.implementation",
+    "onCommand:extension.jump.test",
+    "onCommand:extension.jump.logic",
+    "onCommand:extension.jump.template",
+    "onCommand:extension.jump.style",
+    "onCommand:extension.jump.test",
+    "onCommand:extension.jump.actions",
+    "onCommand:extension.jump.effects",
+    "onCommand:extension.jump.reducer",
+    "onCommand:extension.jump.selectors",
+    "onCommand:extension.jump.facade"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.jump.test",
+          "when": "resourceExtname == .ts && resourceFilename =~ /^((?!\\.(spec|mock)\\.ts).)*$/"
+        },
+        {
+          "command": "extension.jump.implementation",
+          "when": "resourceFilename =~ /\\.(spec|mock)\\.ts$/"
+        },
+        {
+          "command": "extension.jump.logic",
+          "when": "resourceFilename =~ /\\.component\\.(html|css|scss)$/"
+        },
+        {
+          "command": "extension.jump.style",
+          "when": "resourceFilename =~ /\\.component\\.(html|ts)$/"
+        },
+        {
+          "command": "extension.jump.template",
+          "when": "resourceFilename =~ /\\.component\\.(css|scss|ts)$/"
+        },
+        {
+          "command": "extension.jump.actions",
+          "when": "resourceFilename =~ /\\.(effects|reducer|selectors|facade)\\.ts$/"
+        },
+        {
+          "command": "extension.jump.effects",
+          "when": "resourceFilename =~ /\\.(actions|reducer|selectors|facade)\\.ts$/"
+        },
+        {
+          "command": "extension.jump.reducer",
+          "when": "resourceFilename =~ /\\.(actions|effects|selectors|facade)\\.ts$/"
+        },
+        {
+          "command": "extension.jump.selectors",
+          "when": "resourceFilename =~ /\\.(actions|effects|reducer|facade)\\.ts$/"
+        },
+        {
+          "command": "extension.jump.facade",
+          "when": "resourceFilename =~ /\\.(actions|effects|reducer|selectors)\\.ts$/"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "extension.jump.test",
+        "title": "Test",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.implementation",
+        "title": "Implementation",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.logic",
+        "title": "Logic",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.template",
+        "title": "Template",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.style",
+        "title": "Style",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.actions",
+        "title": "Actions",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.effects",
+        "title": "Effects",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.reducer",
+        "title": "Reducer",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.selectors",
+        "title": "Selectors",
+        "category": "Jump"
+      },
+      {
+        "command": "extension.jump.facade",
+        "title": "Facade",
+        "category": "Jump"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.40.0",
+    "glob": "^7.1.5",
+    "mocha": "^6.2.2",
+    "typescript": "^3.6.4",
+    "tslint": "^5.20.0",
+    "vscode-test": "^1.2.2"
+  }
+}
